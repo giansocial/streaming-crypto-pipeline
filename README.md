@@ -1,25 +1,23 @@
 # Streaming Crypto Pipeline
 
-Soy Gian Cruz.
+¿Sabías que el mercado de criptomonedas opera 24/7 sin cierres de sesión y genera más de USD 80 billones en volumen anual? Un pump de 20% en Bitcoin puede ocurrir en horas, y la correlación entre activos cambia semana a semana. La mayoría de dashboards crypto muestran precios en tiempo real, pero ninguno te deja cruzar volatilidad, dominancia y detección de anomalías en un solo modelo.
 
-Pipeline de datos en tiempo real para el mercado de criptomonedas. Consume la API publica de CoinGecko para capturar snapshots de mercado, historial de precios y metricas de volatilidad de las 10 principales criptos por capitalizacion.
+Soy Gian Cruz. Construí este pipeline para consumir la API pública de CoinGecko en modo near-real-time, capturar snapshots de mercado de las 10 principales criptos, calcular retornos diarios, volatilidad rolling, dominancia de mercado, correlación entre pares y detección de pumps/dumps. Todo containerizado con Docker para correr como servicio.
 
-El mercado crypto opera 24/7 sin cierres de sesion, lo que genera un volumen de datos continuo ideal para practicar patrones de ingestion en streaming y near-real-time.
+## Qué hace
 
-## Que hace
-
-- Captura snapshots de mercado (precio, cap, volumen, variacion 24h/7d/30d)
-- Descarga historial de precios diarios (90 dias por defecto)
+- Captura snapshots de mercado (precio, cap, volumen, variación 24h/7d/30d)
+- Descarga historial de precios diarios (90 días por defecto)
 - Calcula retornos diarios y volatilidad rolling
 - Detecta pumps y dumps por umbral de retorno
-- Calcula dominancia de mercado y correlacion entre pares
+- Calcula dominancia de mercado y correlación entre pares
 - Calcula distancia al ATH (all-time high)
 - Valida calidad de datos (completitud, precios negativos, cobertura temporal)
 - Carga a SQLite con esquema dimensional (dim_coin, market_snapshot, price_history)
 - Modo loop para polling continuo con intervalo configurable
 - Docker para despliegue como servicio
 
-## Instalacion
+## Instalación
 
 ```bash
 python -m venv venv
@@ -97,8 +95,8 @@ Supports continuous polling mode for near-real-time ingestion, with Docker deplo
 
 ## Fuentes de datos
 
-| Fuente | Descripcion | Enlace |
+| Fuente | Descripción | Enlace |
 |--------|-------------|--------|
-| CoinGecko API | API publica de datos de criptomonedas en tiempo real | [https://www.coingecko.com/en/api](https://www.coingecko.com/en/api) |
-| CoinGecko - Documentacion API v3 | Referencia completa de endpoints | [https://docs.coingecko.com/reference/introduction](https://docs.coingecko.com/reference/introduction) |
-| CoinMarketCap | Referencia cruzada de capitalizacion y volumen | [https://coinmarketcap.com/](https://coinmarketcap.com/) |
+| CoinGecko API | API pública de datos de criptomonedas en tiempo real | [https://www.coingecko.com/en/api](https://www.coingecko.com/en/api) |
+| CoinGecko - Documentación API v3 | Referencia completa de endpoints | [https://docs.coingecko.com/reference/introduction](https://docs.coingecko.com/reference/introduction) |
+| CoinMarketCap | Referencia cruzada de capitalización y volumen | [https://coinmarketcap.com/](https://coinmarketcap.com/) |
