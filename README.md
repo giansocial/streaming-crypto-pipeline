@@ -85,14 +85,6 @@ streaming-crypto-pipeline/
 
 ---
 
-## What it does
-
-Real-time data pipeline for the cryptocurrency market. Consumes CoinGecko public API to capture market snapshots, price history, and volatility metrics for the top 10 cryptos by market cap.
-
-Supports continuous polling mode for near-real-time ingestion, with Docker deployment for running as a background service.
-
----
-
 ## Fuentes de datos
 
 | Fuente | Descripción | Enlace |
@@ -100,3 +92,42 @@ Supports continuous polling mode for near-real-time ingestion, with Docker deplo
 | CoinGecko API | API pública de datos de criptomonedas en tiempo real | [https://www.coingecko.com/en/api](https://www.coingecko.com/en/api) |
 | CoinGecko - Documentación API v3 | Referencia completa de endpoints | [https://docs.coingecko.com/reference/introduction](https://docs.coingecko.com/reference/introduction) |
 | CoinMarketCap | Referencia cruzada de capitalización y volumen | [https://coinmarketcap.com/](https://coinmarketcap.com/) |
+
+## Licencia
+
+MIT
+
+---
+
+# Streaming Crypto Pipeline
+
+Did you know the crypto market operates 24/7 with no session closes and generates over USD 80 trillion in annual volume? A 20% Bitcoin pump can happen in hours, and the correlation between assets shifts week to week. Most crypto dashboards show real-time prices, but none let you cross-reference volatility, dominance, and anomaly detection in a single model.
+
+I'm Gian Cruz. I built this pipeline to consume the CoinGecko public API in near-real-time mode, capture market snapshots for the top 10 cryptos, compute daily returns, rolling volatility, market dominance, cross-pair correlation, and pump/dump detection. Fully containerized with Docker to run as a service.
+
+## Quick start
+
+```bash
+git clone https://github.com/giansocial/streaming-crypto-pipeline.git
+cd streaming-crypto-pipeline
+python -m venv venv && source venv/bin/activate
+pip install -r requirements.txt
+python -m src.pipeline --mode full --days 90
+```
+
+Or with Docker:
+
+```bash
+docker-compose up --build
+```
+
+## Data sources
+
+| Source | Description | Link |
+|--------|-------------|------|
+| CoinGecko API | Public real-time cryptocurrency data API | [https://www.coingecko.com/en/api](https://www.coingecko.com/en/api) |
+| CoinGecko - API v3 Docs | Complete endpoint reference | [https://docs.coingecko.com/reference/introduction](https://docs.coingecko.com/reference/introduction) |
+
+## License
+
+MIT
