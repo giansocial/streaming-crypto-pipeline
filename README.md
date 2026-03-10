@@ -93,6 +93,16 @@ streaming-crypto-pipeline/
 | CoinGecko - Documentación API v3 | Referencia completa de endpoints | [https://docs.coingecko.com/reference/introduction](https://docs.coingecko.com/reference/introduction) |
 | CoinMarketCap | Referencia cruzada de capitalización y volumen | [https://coinmarketcap.com/](https://coinmarketcap.com/) |
 
+## Visualizaciones
+
+Resultados del analisis exploratorio (notebook completo en `notebooks/`):
+
+![Market cap por criptomoneda](docs/images/grafico_01.png)
+
+![Correlacion de cambios de precio](docs/images/grafico_02.png)
+
+![Precio normalizado ultimos 90 dias](docs/images/grafico_03.png)
+
 ## Licencia
 
 MIT
