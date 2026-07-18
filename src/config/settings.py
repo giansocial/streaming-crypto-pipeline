@@ -1,3 +1,9 @@
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
+DATA_DIR = BASE_DIR / "data"
+DATA_DIR.mkdir(parents=True, exist_ok=True)
+
 COINGECKO_BASE_URL = "https://api.coingecko.com/api/v3"
 
 COINS = [
@@ -37,4 +43,4 @@ VOLATILITY_WINDOW = 30
 CORRELATION_MIN_PERIODS = 14
 DOMINANCE_THRESHOLD = 0.4
 
-DB_PATH = "data/crypto_market.db"
+DB_PATH = DATA_DIR / "crypto_market.db"

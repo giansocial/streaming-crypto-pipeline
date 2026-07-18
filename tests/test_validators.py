@@ -1,5 +1,4 @@
 import pandas as pd
-import pytest
 from src.quality.validators import validate_prices, validate_market_caps, validate_temporal_coverage
 
 

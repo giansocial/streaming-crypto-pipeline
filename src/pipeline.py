@@ -6,7 +6,7 @@ from src.extract.coingecko_client import fetch_market_data, parse_market_respons
 from src.transform.cleaner import clean_market_snapshot, clean_price_history
 from src.transform.enricher import (
     daily_returns, rolling_volatility, market_dominance,
-    detect_pumps, ath_distance, volume_price_ratio,
+    detect_pumps, ath_distance, volume_price_ratio, price_correlation_matrix,
 )
 from src.quality.validators import validate_prices, validate_market_caps
 from src.load.warehouse import get_connection, create_tables, upsert_coins, insert_snapshots, upsert_history
@@ -59,10 +59,11 @@ def run_history(conn, coins=None, days=90):
     combined = market_dominance(combined)
     combined = volume_price_ratio(combined)
     combined = detect_pumps(combined)
+    correlation = price_correlation_matrix(combined)
 
     records = upsert_history(conn, combined)
     logger.info(f"history: {records} records loaded")
-    return {"records": records}
+    return {"records": records, "correlation": correlation}
 
 
 def run_pipeline(mode="snapshot", days=90, loop=False, interval=60):

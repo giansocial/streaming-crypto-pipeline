@@ -1,5 +1,4 @@
 import pandas as pd
-import numpy as np
 import pytest
 from src.transform.enricher import (
     daily_returns, rolling_volatility, market_dominance,
