@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
@@ -37,7 +38,7 @@ VS_CURRENCY = "usd"
 MARKET_URL = f"{COINGECKO_BASE_URL}/coins/markets"
 HISTORY_URL = f"{COINGECKO_BASE_URL}/coins/{{coin_id}}/market_chart"
 
-POLLING_INTERVAL = 60
+POLLING_INTERVAL = int(os.environ.get("POLLING_INTERVAL", 60))
 
 VOLATILITY_WINDOW = 30
 CORRELATION_MIN_PERIODS = 14

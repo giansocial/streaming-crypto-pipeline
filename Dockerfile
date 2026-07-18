@@ -9,4 +9,4 @@ COPY src/ src/
 
 RUN mkdir -p data/raw data/processed logs
 
-CMD ["python", "-m", "src.pipeline"]
+CMD ["python", "-m", "src.pipeline", "--mode", "snapshot", "--loop"]

@@ -11,6 +11,7 @@ from src.transform.enricher import (
 from src.quality.validators import validate_prices, validate_market_caps
 from src.load.warehouse import get_connection, create_tables, upsert_coins, insert_snapshots, upsert_history
 from src.utils.logger import get_logger
+from src.config.settings import POLLING_INTERVAL
 
 logger = get_logger("pipeline")
 
@@ -97,7 +98,7 @@ if __name__ == "__main__":
     parser.add_argument("--mode", default="snapshot", choices=["snapshot", "history", "full"])
     parser.add_argument("--days", type=int, default=90)
     parser.add_argument("--loop", action="store_true")
-    parser.add_argument("--interval", type=int, default=60)
+    parser.add_argument("--interval", type=int, default=POLLING_INTERVAL)
     args = parser.parse_args()
 
     run_pipeline(

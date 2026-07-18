@@ -43,6 +43,10 @@ def create_tables(conn):
             daily_return REAL,
             volatility REAL,
             dominance REAL,
+            vp_ratio REAL,
+            is_dominant INTEGER,
+            is_pump INTEGER,
+            is_dump INTEGER,
             PRIMARY KEY (coin_id, date),
             FOREIGN KEY (coin_id) REFERENCES dim_coin(coin_id)
         );
@@ -103,6 +107,7 @@ def upsert_history(conn, df):
     cols = [
         "coin_id", "date", "price_usd", "volume_24h",
         "market_cap", "daily_return", "volatility", "dominance",
+        "vp_ratio", "is_dominant", "is_pump", "is_dump",
     ]
     available = [c for c in cols if c in df.columns]
 
