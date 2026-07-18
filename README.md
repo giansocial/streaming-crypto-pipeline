@@ -6,22 +6,9 @@ Soy Gian Cruz. Quería entender los patrones del mercado crypto más allá del p
 
 Lo que hice fue construir un pipeline en modo near-real-time que captura snapshots de mercado de las 10 principales criptos vía CoinGecko, descarga historial de precios de 90 días, calcula retornos diarios, volatilidad rolling, dominancia de mercado, correlación entre todos los pares, distancia al ATH (all-time high) y detecta pumps y dumps por umbral de retorno. Corre en loop con intervalo configurable y está containerizado con Docker.
 
-El resultado: el 60% de los pumps detectados (retornos > 15% en 24h) se revierten parcialmente dentro de las 48 horas siguientes. La correlación BTC-ETH cae por debajo de 0.5 justo antes de movimientos de mercado grandes. Y Solana tiene la mayor volatilidad rolling de las top 10, con swings del doble que Bitcoin en el mismo período. Patrones que solo aparecen cuando capturas datos continuamente y los cruzas entre activos.
+Lo que encontré es que el 60% de los pumps detectados (retornos > 15% en 24h) se revierten parcialmente dentro de las 48 horas siguientes. La correlación BTC-ETH cae por debajo de 0.5 justo antes de movimientos de mercado grandes. Y Solana tiene la mayor volatilidad rolling de las top 10, con swings del doble que Bitcoin en el mismo período. Patrones que solo aparecen cuando capturas datos continuamente y los cruzas entre activos.
 
 Si quieres ver cómo funciona el pipeline o tienes ideas sobre qué más se puede detectar en mercados crypto, el código está acá.
-
-## Qué hace
-
-- Captura snapshots de mercado (precio, cap, volumen, variación 24h/7d/30d)
-- Descarga historial de precios diarios (90 días por defecto)
-- Calcula retornos diarios y volatilidad rolling
-- Detecta pumps y dumps por umbral de retorno
-- Calcula dominancia de mercado y correlación entre pares
-- Calcula distancia al ATH (all-time high)
-- Valida calidad de datos (completitud, precios negativos, cobertura temporal)
-- Carga a SQLite con esquema dimensional (dim_coin, market_snapshot, price_history)
-- Modo loop para polling continuo con intervalo configurable
-- Docker para despliegue como servicio
 
 ## Instalación
 
@@ -123,7 +110,7 @@ I'm Gian Cruz. I wanted to understand crypto market patterns beyond price, and f
 
 What I built is a near-real-time pipeline that captures market snapshots for the top 10 cryptos via CoinGecko, downloads 90-day price history, computes daily returns, rolling volatility, market dominance, cross-pair correlation, distance to ATH (all-time high), and detects pumps and dumps by return threshold. It runs in a configurable-interval loop and is fully containerized with Docker.
 
-The result: 60% of detected pumps (returns > 15% in 24h) partially reverse within the following 48 hours. The BTC-ETH correlation drops below 0.5 right before major market moves. And Solana has the highest rolling volatility of the top 10, with swings double Bitcoin's over the same period.
+What I found is that 60% of detected pumps (returns > 15% in 24h) partially reverse within the following 48 hours. The BTC-ETH correlation drops below 0.5 right before major market moves. And Solana has the highest rolling volatility of the top 10, with swings double Bitcoin's over the same period.
 
 If you want to see how the pipeline works or have ideas about what else can be detected in crypto markets, the code is right here.
 
